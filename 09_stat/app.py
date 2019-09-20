@@ -4,7 +4,11 @@ app = Flask(__name__) #create instance of class Flask
 @app.route("/") #assign following fxn to run when root route requested
 def hello_world():
     print(__name__) #where will this go?
-    nums = [0, 1, 1, 2, 3, 5, 8];
+    return "no hablo queso";
+
+@app.route("/stub")
+def stub():
+    nums = [2,1,5,6,7,4,3,2,34,5];
     return render_template("stub.html", nums=nums);
 
 if __name__ == "__main__":
