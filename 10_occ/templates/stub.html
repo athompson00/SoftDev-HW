@@ -2,19 +2,24 @@
 <html>
  <head>
    <meta charset="UTF-8">
-   <title>title</title>
+   <title>Random Occupation</title>
  </head>
  <body>
   <h1>Random Occupation Web App</h1>
   <h3>This will choose a random occupation from a csv file based on the percent of the population in the given job. There is a table with the possible jobs and corresponding population percent in the job</h3>
   <h3>ThumbsCows</h3>
-  <h3>Roster</h3>
-  <h4>Alex Thompson (Thumb Thompson)<h4>
-  <h4>William Cao (Cow)<h4>
+  <h3>Roster:</h3>
+  <h4>* Alex Thompson (Thumb Thompson)<h4>
+  <h4>* William Cao (Cow)<h4>
   <h3> The Random Job Selected Is: {{job}}</h3>
+  <table style = "width: 100%">
+    <th>  Occupation </th>
+    <th> Percentage of Population </th>
   {% for occupation in occupations %}
-  {{occupation + '\t' + occupations[occupation] + '\n'}}
-  <br>
+  <tr>
+    <td> {{occupation}} </td>
+    <td> {{occupations[occupation]}} </td>
+  </tr>
   {% endfor %}
  </body>
 </html>
