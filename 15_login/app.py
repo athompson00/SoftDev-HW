@@ -11,6 +11,7 @@ import os
 app = Flask(__name__)
 app.secret_key = os.urandom(32)
 
+global msg
 #hardcoded correct login information
 username = "alex"
 password = "pass"
@@ -18,44 +19,39 @@ password = "pass"
 #initial route, renders home.html/our login page
 @app.route("/")
 def login():
-    global entered
-    entered = False #initialize entered and set to false, as no information has yet been entered
+    if "counter" in session:
+        session["counter"] = session.get("counter") + 1
+        if ((session["username"] != "alex") & (session["password"] != "pass")):
+            msg = "Wrong username and password"
+        elif (session["username"] != "alex"):
+            msg = "Wrong username"
+        else:
+            msg = "Wrong password"
 
-    #create global variables, which will store user submitted info
-    global userw
-    userw = ""
-    global passw
-    passw = ""
-
-    return render_template('home.html', error = entered)
+        if (session["username"] == username) & (session["password"] == password): #if username and password are correct, redirect to welcome page
+            return render_template('welcome.html')
+        else:
+            return render_template('home.html', error = True, message = msg )
+    else:
+        session["counter"] = 1
+        msg = ""
+        return render_template('home.html', error = False)
 
 @app.route("/welcome")
 def stuff():
     entered = False #reset entered variable
 
-    #necessary form stuff
-    print(request.form)
-    print ("????????")
-    print(request.method)
-    print(app)
-    print(request)
 
-    userw = request.args["username"] #set userw to submitted username
-    passw = request.args["password"] #set passw to submitted password
+    session["username"] = request.args["username"] #set userw to submitted username
+    session["password"] = request.args["password"] #set passw to submitted password
 
     #session["username"] = request.args["username"]
 
-    if (request.args["username"] == username) & (request.args["password"] == password): #if username and password are correct, redirect to welcome page
-        return render_template('welcome.html', username = request.args["username"], password = request.args["password"])
+    if (session["username"] == username) & (session["password"] == password): #if username and password are correct, redirect to welcome page
+        return render_template('welcome.html', username = session["username"], password = session["password"])
     else: #if incorrect, redirect to login page with error message
-        return redirect(url_for('elogin'))
+        return redirect(url_for('login'))
 
-@app.route("/oops")
-def elogin():
-    #set entered to true, user submitted incorrect login information
-    entered = True
-
-    return render_template('home.html', error = entered, passw = passw, userw = userw)
 
 if __name__ == "__main__":
     app.debug = True
