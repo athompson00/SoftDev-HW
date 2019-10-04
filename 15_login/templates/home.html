@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Form</title>
+</head>
+
+<body>
+
+  <h2> By Alex Olteanu and Alex Thompson</h2>
+  <h2> aka: The Alexs</h2>
+
+
+  <p>Enter login:</p>
+  <form action= "/welcome">
+    <p> username: </p>
+    <input type = "text" name = "username">
+    <br>
+    <br>
+    <p> password: </p>
+    <input type = "text" name = "password">
+    <br>
+    <br>
+    <input type = "submit" name = "sub1" value = "submit">
+  </form>
+
+  <br>
+  <br>
+  {% if error %}
+  {% if userw != "alex" %}
+  {{ "wrong username!" }}
+  {% endif %}
+  <br>
+  {% if passw != "pass" %}
+  {{ "wrong password!" }}
+  {% endif %}
+  {% endif %}
+
+</body>
+
+</html>
