@@ -16,6 +16,13 @@ global msg
 username = "alex"
 password = "pass"
 
+@app.route("/logout")
+def logout():
+    session.pop("counter")
+    session.pop("username")
+    session.pop("password")
+    return redirect(url_for('login'))
+
 #initial route, renders home.html/our login page
 @app.route("/")
 def login():
