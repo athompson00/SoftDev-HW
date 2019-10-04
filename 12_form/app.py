@@ -2,12 +2,12 @@ from flask import Flask, render_template, request
 app = Flask(__name__)
 
 
-@app.route("/")
+@app.route("/", methods = ["POST"])
 def occupation():
     #print (request.args["username"])
     return render_template('test.html')
 
-@app.route("/auth")
+@app.route("/auth", methods = ["POST", "GET"])
 def stuff():
     print(request.form)
     print ("????????")
