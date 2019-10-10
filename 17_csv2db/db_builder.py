@@ -21,9 +21,10 @@ command = "CREATE TABLE students (name TEXT PRIMARY KEY, age INTEGER, id INTEGER
 c.execute(command)    # run SQL statement
 
 with open ("students.csv", "r") as csvfile :
-    filereader = csv.reader("students.csv")
+    filereader = csv.DictReader(csvfile)
     for row in filereader:
-        command = "INSERT INTO students VALUES (" + "'" + row["name"] + "', " + row["age"] + row["id"] + ");"
+        command = "INSERT INTO students VALUES (" + "'" + row["name"] + "',"  + row["age"] + "," + row["id"] + ");"
+        #print(command)
         c.execute(command)
 
 
@@ -34,9 +35,10 @@ command = "CREATE TABLE courses (code, mark INTEGER, id INTEGER);"
 c.execute(command)
 
 with open ("courses.csv", "r") as csvfile :
-    filereader = csv.reader("courses.csv")
+    filereader = csv.DictReader(csvfile)
     for row in filereader:
-        command = "INSERT INTO students VALUES (" + "'" + row["code"] + "', " + row["mark"] + row["id"] + ");"
+        command = "INSERT INTO students VALUES (" "'" + row["code"] + "', " + row["mark"] + "," + row["id"] + ");"
+        print(command)
         c.execute(command)
 
 #==========================================================
