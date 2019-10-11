@@ -37,8 +37,8 @@ c.execute(command)
 with open ("courses.csv", "r") as csvfile :
     filereader = csv.DictReader(csvfile)
     for row in filereader:
-        command = "INSERT INTO students VALUES (" "'" + row["code"] + "', " + row["mark"] + "," + row["id"] + ");"
-        print(command)
+        command = "INSERT INTO courses VALUES (" "'" + row["code"] + "', " + row["mark"] + "," + row["id"] + ");"
+        #print(command)
         c.execute(command)
 
 #==========================================================
