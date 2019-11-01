@@ -1,0 +1,46 @@
+body {
+  background-color: #666666;
+  font-family: Arial;
+  margin: 10px;
+}
+
+.innerBox {
+  background-color: gray;
+}
+
+.topLine {
+  color: white;
+  background-color: silver;
+  text-align: center;
+  margin: 0px
+}
+
+.navfoo {
+  float: left;
+  width: 250px;
+  margin: 10px;
+}
+
+ul {
+  list-style-type: none;
+  color: white;
+  margin: 10px;
+  padding-left: 0
+}
+
+a {
+  color: white;
+  text-decoration: none
+}
+
+.mainBody {
+  display: inline-block;
+  vertical-align: top;
+  width: 700px
+}
+
+.copyRight{
+  text-align: right;
+  background-color:#595959;
+  color:gray; height: 20px
+}
