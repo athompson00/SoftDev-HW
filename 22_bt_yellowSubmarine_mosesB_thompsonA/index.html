@@ -15,13 +15,9 @@
 
 <body class="container">
   <nav id="navbar-example2" class="navbar navbar-light bg-dark sticky-top">
-    <a class="navbar-brand text-light" href="#">Navbar</a>
+    <a class="navbar-brand text-light" href="#navbar">Navbar</a>
 
     <ul class="nav nav-pills">
-
-      <li class="nav-item">
-        <a class="nav-link" href="#buttons">Buttons</a>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="#cards">Cards</a>
@@ -32,19 +28,15 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="#progress">Progress Bars</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" href="#spinners">Spinners</a>
+        <a class="nav-link" href="#addinfo">Additional Documentation</a>
       </li>
     </ul>
   </nav>
 
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
-      <h1 class="display-4">What is Bootstrap?</h1>
-      <p class="lead">Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.</p>
+      <h1 class="display-4">This is a jumbotron</h1>
+      <p class="lead">The jumbotron allows you to highlight important text or features</p>
     </div>
   </div>
 
@@ -143,26 +135,69 @@
               <h5 class="mb-1">This part item in the list group is active</h5>
             </div>
             <p class="mb-1">In order to make the list item actiave, just add "list-group-item-action active" in the class</p>
-            <small class="text-muted text-white">Since the text is hard to see here, we used "text-dark" in the class statement to change its color</small>
+            <small class="text-white">Since the text is hard to see here, we used "text-white" in the class statement to change its color</small>
           </a>
         </div>
       </div>
     </div>
   </div>
+  <br><br>
   <div class="row">
-    <ul class="list-group">
-      <li class="list-group-item disabled" aria-disabled="true">
-        <p>The above is a navbar. This can be used to route the user to different links and can contain a search bar. If you scroll, the Navbar
-          will stay at the top of your screen.
+    <a id="navbar"></a>
+    <div class="card">
+      <h5 class="card-header">Explanation of the navbar</h5>
+      <div class="card-body">
+        <p class="card-text">At the top is a navbar. This can be used to route the user to different links and can contain a search bar. If you scroll, the Navbar
+          will stay at the top of your screen. This can be made using the following code:
         </p>
-      </li>
-  </div>
+      </div>
 
-  <div class="row">
-    <div class="col">
+      <div class="card-body">
+        <code>
+          &lt;nav id="navbar-example2" class="navbar navbar-light bg-dark sticky-top"&gt;
+          <br>
+          &nbsp&nbsp&lt;a class="navbar-brand text-light" href="#"&gt;Navbar&lt;/a&gt;
+          <br>
+          &nbsp&nbsp&lt;ul class="nav nav-pills"&gt;
+          <br>
+          &nbsp&nbsp&nbsp&nbsp&lt;li class="nav-item"&gt;
+          <br>
+          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&lt;a class="nav-link" href="#link"&gt;Link display&lt;/a&gt;
+          <br>
+          &nbsp&nbsp&nbsp&nbsp&lt;/li&gt;
+          <br>
+          &nbsp&nbsp&lt;/ul&gt;
+          <br>
+          &lt;/nav&gt;
+        </code>
+      </div>
+      <br>
+      <div class="card-body">
+        <p class="card-text">
+          Notice that you can include links in nav-items which route the user elsewhere.
+          <br>
+          Also notice how the navbar stays at the top of the screen when you scroll. This is because of the "sticky-top" tag in the
+          initial nav declaration.
+        </p>
+      </div>
+      <div class="row">
+        <div class="col">
 
+        </div>
+
+      </div>
     </div>
-
-  </div>
   </div>
 </body>
+
+
+<footer class="page-footer">
+
+  <div class="jumbotron">
+    <a id="addinfo"></a>
+    <div class="container">
+      <h4> For additional documentation, visit the bootstrap website below: </h4>
+      <a href="https://getbootstrap.com/docs/4.3/getting-started/introduction/"> Bootstrap Documentation</a>
+    </div>
+  </div>
+  </footer>
