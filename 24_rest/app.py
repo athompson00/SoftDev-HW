@@ -9,8 +9,13 @@ def root():
     u = urllib.request.urlopen(link)
     response = u.read()
     data = json.loads(response)
+<<<<<<< HEAD
     input = data["photos"][0]['img_src']
     return render_template("index.html", data = input)
+=======
+    image = data["photos"][0]['img_src']
+    return render_template("index.html", pic = image)
+>>>>>>> 7800b803c6d58a4ace3bac9f7783d4282ca9e2ff
 
 
 if __name__ == "__main__":
