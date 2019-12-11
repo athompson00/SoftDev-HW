@@ -22,6 +22,29 @@ var gcd = function(a, b){
     return gcd(b, a);
   }
   if (a % b == 0){
-    return a / b;
+    return b;
+  } else {
+    return gcd(b, a % b);
   }
+}
+
+
+
+var randomStudent = function(){
+  var students = [
+  "Loreta", "Lindstrom",  
+  "Tiffaney", "Barbara",  
+  "Tarah", "Axford",  
+  "China", "Piano",
+  "Freda", "Dewall",  
+  "Ramonita", "Grove",  
+  "Mason", "Forgione",  
+  "Krystle" ,"Marshburn",  
+  "Patti", "Lasso",  
+  "Bud", "Michel",  
+  "Rodolfo", "Haggett",  
+  "Terra", "Valencia"
+  ];
+  var randind = Math.floor(Math.random() * 24);
+  return students[randind];
 }
