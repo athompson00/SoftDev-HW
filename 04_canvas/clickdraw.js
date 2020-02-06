@@ -20,10 +20,20 @@ var changeMode = function(e) {
 }
 
 var draw = function(e) {
-  var x = e.clientX;
-  var y = e.clientY;
+  var barrier = slate.getBoundingClientRect();
+  var x = e.clientX - barrier.left;
+  var y = e.clientY - barrier.top;
   console.log(x);
   console.log(y);
+  var ctx = slate.getContext("2d");
+  if (mode == "rect"){
+    ctx.fillRect(x, y, 50, 50);
+  } else {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+  }
 }
 
 slate.addEventListener("click", draw);
