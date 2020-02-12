@@ -4,6 +4,7 @@ var clear = document.getElementById('clear');
 
 var clearCanvas = function(e) {
   ctx.clearRect(0, 0, 600, 600);
+  lastPoint = [0, 0];
 }
 
 clear.addEventListener("click", clearCanvas);
@@ -30,6 +31,7 @@ var draw = function(e){
   ctx.beginPath();
   ctx.arc(x, y, 5, 0, Math.PI * 2);
   ctx.fill();
+  ctx.moveTo(x, y);
 
 }
 
