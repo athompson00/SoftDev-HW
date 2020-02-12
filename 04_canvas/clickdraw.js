@@ -1,6 +1,5 @@
 var clear = document.getElementById('clear');
-var dot = document.getElementById('dot');
-var rect = document.getElementById('rect');
+var mode = document.getElementById('mode');
 var slate = document.getElementById("slate");
 
 var mouseX;
@@ -15,8 +14,10 @@ var clearCanvas = function(e) {
 var changeMode = function(e) {
   if (mode === "rect")
     mode = "dot";
+    mode.innerHTML = "Toggle: mode dot";
   else
     mode = "rect";
+    mode.innerHTML = "Toggle: mode rect";
 }
 
 var draw = function(e) {
@@ -32,11 +33,10 @@ var draw = function(e) {
     ctx.beginPath();
     ctx.arc(x, y, 10, 0, Math.PI * 2);
     ctx.fill();
-    ctx.stroke();
+    // ctx.stroke();
   }
 }
 
 slate.addEventListener("click", draw);
 clear.addEventListener("click", clearCanvas);
-dot.addEventListener("click", changeMode);
-rect.addEventListener("click", changeMode);
+mode.addEventListener("click", changeMode);
