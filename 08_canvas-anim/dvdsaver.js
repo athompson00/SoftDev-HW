@@ -63,11 +63,18 @@ var startcircleanim = function(e){
 }
 
 var startdvdanim = function(e){
-    dvdonoff = true;
-    circleonoff = false;
-    dvdx = Math.random() * 600;
-    dvdy = Math.random() * 600;
-    window.requestAnimationFrame(drawdvd);
+    if (!dvdonoff){
+      dvdonoff = true;
+      circleonoff = false;
+      dvdx = Math.random() * (600-90);
+      dvdy = Math.random() * (600-60);
+      window.requestAnimationFrame(drawdvd);
+    } else {
+      window.cancelAnimationFrame();
+      dvdx = Math.random() * (600 - 90);
+      dvdy = Math.random() * (600 - 60);
+      window.requestAnimationFrame(drawdvd);
+    }
 }
 
 var drawdvd = function(e){
