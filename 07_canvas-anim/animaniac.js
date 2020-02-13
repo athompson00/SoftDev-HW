@@ -11,8 +11,10 @@ var animate = document.getElementById('animate');
 
 var stop = document.getElementById('stop');
 
+var radius = 5;
+
 var draw = function(timestamp){
-  console.log("calling draw");
+  //console.log("calling draw");
   if (!start){
     start = timestamp;
   } else {
@@ -20,9 +22,8 @@ var draw = function(timestamp){
   }
   if (radius >= 300 || radius <= 0){
     rate *= -1;
-    start = timestamp;
   }
-  var radius = radius + (rate * (timestamp - start));
+  radius = radius + rate;
   ctx.beginPath();
   ctx.arc(300, 300, radius, 0, Math.PI * 2);
   ctx.fill();
