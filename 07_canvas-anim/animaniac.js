@@ -1,7 +1,7 @@
 var start = null;
 var prev = null;
 var rate = 1;
-var onoff = true;
+var onoff = false;
 
 var animation = document.getElementById('animation');
 
@@ -28,7 +28,7 @@ var draw = function(timestamp){
   ctx.arc(300, 300, radius, 0, Math.PI * 2);
   ctx.fill();
   if (onoff){
-    window.requestAnimationFrame(draw)
+    window.requestAnimationFrame(draw);
   }
 }
 
@@ -37,9 +37,14 @@ var stopanim = function(e){
 }
 
 var startanim = function(e){
-  onoff = true;
-  //console.log("calling startanim");
-  window.requestAnimationFrame(draw);
+
+  if (!onoff){
+
+
+    //console.log("calling startanim");
+    onoff = true;
+    window.requestAnimationFrame(draw);
+  }
 }
 
 animate.addEventListener('click', startanim);
