@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+      <h2> MOVIES LIST! </h2>
+      <p> This site can let you sort by gross (revenue), year, genre, and ratings. <br>
+        Note: only one sorting category can be applied at a time. </p> <hr> <br>
+      <b>Get all movies grossing above the amount entered below (in US gross):</b>
+      <form action = "\gross_results" method = "GET">
+        $<input type = "text" name = "gross">USD <br>
+        <input type = "submit" value = "Submit">
+      </form> <br> <br>
+
+      <b>Get all movies with above the following IMDB AND Rotten Tomatoes ratings:</b>
+      <form action = "\ratings_results" method = "GET">
+        IMDB: <br><input type = "number" name = "imdb"> <br>
+        Rotten Tomatoes: <br><input type = "number" name = "rotten_tomatoes"> <br>
+        <input type = "submit" value = "Submit"> <br>
+      </form> <br>
+
+      <b>Get all movies released after a given year:</b>
+      <form action = "\year_results" method = "GET">
+        <input type = "number" name = "year"> <br>
+        <input type = "submit" value = "Submit"> <br>
+      </form> <br>
+
+      <b>Get movies by genre:</b>
+      <form action = "\genre_results" method = "GET">
+        <select name = 'genre'>
+          <option value = 'Drama'>Drama</option>
+          <option value = 'Comedy'>Comedy</option>
+          <option value = 'Musical'>Musical</option>
+          <option value = 'Thriller/Suspense'>Thriller/Suspense</option>
+          <option value = 'Adventure'>Adventure</option>
+          <option value = 'Action'>Action</option>
+          <option value = 'Romantic Comedy'>Romantic Comedy</option>
+          <option value = 'Horror'>Horror</option>
+          <option value = 'Western'>Western</option>
+          <option value = 'Documentary'>Documentary</option>
+          <option value = 'Black Comedy'>Black Comedy</option>
+          <option value = 'Concert/Performance'>Concert/Performance</option>
+        </select>
+
+        <input type = "submit" value = "Submit"> <br>
+      </form> <br>
+      <b>Is your name popular?</b>
+      <p>Your name is popular if there's a director that shares your name whose movie <br>
+        has more than 1000 IMDB votes</p>
+
+      <form action = "\popular_results" method = "GET">
+        <input type = "text" name = "name"> <br>
+        <input type = "submit" value = "Submit"> <br>
+      </form> <br> <br>
+
+      {{message}} <br> <br>
+
+      {% if gross %}
+        {% for i in gross %}
+            <b>{{i['Title']}}</b>: {{i['US_Gross']}} <br> <br>
+        {% endfor %}
+      {% endif %}
+
+      {% if ratings %}
+      {% for i in ratings %}
+          <b>{{i['Title']}}</b>: IMDB - {{i['IMDB_Rating']}}, Rotten Tomatoes - {{i["Rotten_Tomatoes_Rating"]}} <br> <br>
+      {% endfor %}
+      {% endif %}
+
+      {% if year %}
+      {% for i in year %}
+          <b>{{i['Title']}}</b>: {{i['Release_Date']}} <br> <br>
+      {% endfor %}
+      {% endif %}
+
+      {% if genre %}
+      {% for i in genre %}
+          <b>{{i['Title']}}</b>: {{i['Major_Genre']}} <br> <br>
+      {% endfor %}
+      {% endif %}
+    </body>
+</html>
