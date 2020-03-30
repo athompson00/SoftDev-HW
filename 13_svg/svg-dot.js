@@ -12,15 +12,22 @@ var addDot = function(e) {
     var cliy = e.clientY - dim.top;
 
     var oncircle = false;
-    var color = "blue";
+    var color = "black";
     var index;
 
     var i;
+
     for (i = 0; i < svg.children['length']; i++){
-      if ((((clix - svg.children[i]['attributes'][0]['value']) ^ 2) + ((cliy - svg.children[i]['attributes'][1]['value']) ^ 2)) < (svg.children[i]['attributes'][2]['value'] ^ 2)) {
+      var dist = Math.abs(Math.pow((svg.children[i]['attributes'][0]['value'] - clix), 2) + Math.pow((svg.children[i]['attributes'][1]['value'] - cliy), 2)) ;
+      if (dist <= 100) {
         oncircle  = true;
         color = svg.children[i]['attributes']['fill']['value'];
         index = i;
+        console.log(dist);
+        console.log(svg.children[i]['attributes'][0]['value']);
+        console.log(svg.children[i]['attributes'][1]['value']);
+        console.log(clix);
+        console.log(cliy);
       }
     }
     if (oncircle) {
@@ -41,8 +48,8 @@ var addDot = function(e) {
       circle.setAttribute("fill", "black");
       svg.appendChild(circle);
     }
-    console.log(clix);
-    console.log(cliy);
+    // console.log(clix);
+    // console.log(cliy);
     console.log(oncircle);
 }
 
