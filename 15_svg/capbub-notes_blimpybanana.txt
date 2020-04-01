@@ -1,0 +1,36 @@
+Alexander Thompson
+Biraj Chowdhury
+SoftDev1 pd<2>
+K #15 -- Capture Bubble Toil Trouble
+2020--02--11
+
+Example 1:
+  Predictions:
+    - an alert will pop up of the word clicked
+  Observations:
+    - Performed as expected
+
+Example 2:
+  Predictions:
+    - only the table eventlistener will work and it will show an alert with the html tags etc inside of it.
+  Observations:
+    - 3 separate alerts come up each time
+    - first is the tds, then trs, then entire table
+    - HTML tags are included as suspected
+  Questions:
+    - How is the order of alerts determined? Is it by size or by order of creation?
+    ^- Answer: Innermost element gets the first alert
+
+Example 3:
+  Predictions:
+    - Without the commented line, it'll perform exactly the same as the previous one
+    - When uncommented, it may stop the other event listeners from firing.
+  Observations:
+    - As predicted, the other event listeners do not fire and only the table alert is displayed
+    - stopPropagation makes it so that only the largest element fires.
+
+Example 4:
+  Predictions:
+    - We predict that the order in which eventlisteners are attached will not matter
+  Observations:
+    - We were correct. The largest element gets precedence in stopPropagation and smallest gets precedence when all of them fire at the same time.
