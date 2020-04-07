@@ -1,0 +1,7 @@
+- .enter() adds missing datum to the view
+- .append() dictates in what element those datum are added, and returns the collection to which they were added
+- .selectAll() gets all of the elements in the subelements in the elements of a specified type
+- d3.mean(<array>), d3.max(<array>), d3.mean(<array>), d3.median(<array>)
+- import {chart as chart1} with {values as data} from "@d3/histogram"
+	- That line makes all the histogram magic happen
+  - values is the array of values inserted into the histogram

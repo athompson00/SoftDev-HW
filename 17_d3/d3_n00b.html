@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Joseph Yusufov and Alexander Thompson
+SoftDev2 pd2
+2020-04-08
+-->
+<html>
+<head>
+</head>
+<body>
+<svg version="1.1"
+   baseProfile="full"
+   width="600" height="600"
+   xmlns="http://www.w3.org/2000/svg">
+  <circle cx="150" cy="100" r="90" fill="blue" />
+  <circle cx="400" cy="400" r="90" fill="blue" />
+  <circle cx="400" cy="100" r="90" fill="blue" />
+</svg>
+  <script src="http://d3js.org/d3.v5.min.js"
+  	charset="utf-8"></script>
+  <script type="text/javascript">
+        d3.select("body").transition()
+          .style("background-color", "pink");
+
+        d3.selectAll("circle").transition()
+        .duration(750)
+        .delay(function(d, i) { return i * 500; })
+        // .attr("r", function(d) { return Math.sqrt(d * scale); });
+        .attr("r", 40);
+
+        console.log([d3.min(values), d3.median(values), d3.max(values)])
+
+  </script>
+</body>
+</html>
