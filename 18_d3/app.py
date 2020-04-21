@@ -12,7 +12,7 @@ app = Flask(__name__)
 def getscores(year):
     scores = []
     schools_list = {}
-    with open('scores' + str(year) + '.json') as json_file:
+    with open('static/json/scores' + str(year) + '.json') as json_file:
         schools = json_file.read()
         schools_list = json.loads(schools)
         schools_list = schools_list['data']
@@ -27,12 +27,12 @@ def getscores(year):
     return scores
 
 def cachescores(vals2010, vals2012):
-    with open('static/2010.csv', 'w', newline='') as csvfile:
+    with open('static/csv/2010.csv', 'w', newline='') as csvfile:
         filewriter = csv.writer(csvfile)
         filewriter.writerow(['score'])
         for val in vals2010:
             filewriter.writerow([str(val)])
-    with open('static/2012.csv', 'w', newline='') as csvfile:
+    with open('static/csv/2012.csv', 'w', newline='') as csvfile:
         filewriter = csv.writer(csvfile)
         filewriter.writerow(['score'])
         for val in vals2012:

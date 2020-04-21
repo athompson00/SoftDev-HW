@@ -15,11 +15,11 @@ var svg = d3.select("#hist")
 
 // get the data
 // d3.csv("https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/1_OneNum.csv", function(data) {
-d3.csv("static/2010.csv", function(data) {
+d3.csv("static/csv/2010.csv", function(data) {
   console.log(data);
   // X axis: scale and draw:
   var x = d3.scaleLinear()
-      .domain([800, 2200])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+      .domain([800, 2400])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
       .range([0, width]);
   svg.append("g")
       .attr("transform", "translate(0," + height + ")")
@@ -65,11 +65,11 @@ var update = function(e){
   var filename;
   console.log(sw);
   if (!sw){
-    filename = "static/2012.csv";
+    filename = "static/csv/2012.csv";
     title.innerHTML = " Average SAT scores by school in NYC 2012 (out of 2400)";
     caption.innerHTML = " Click this button to see 2010 scores in NYC ";
   } else {
-    filename = "static/2010.csv";
+    filename = "static/csv/2010.csv";
     title.innerHTML = " Average SAT scores by school in NYC 2010 (out of 2400)";
     caption.innerHTML = " Click this button to see 2012 scores in NYC ";
   }
@@ -77,10 +77,8 @@ var update = function(e){
   d3.csv(filename, function(data) {
     console.log(data);
     var x = d3.scaleLinear()
-        .domain([800, 2200])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+        .domain([800, 2400])     // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
         .range([0, width]);
-
-
     var histogram = d3.histogram()
         .value(function(d) { return d.score; })   // I need to give the vector of value
         .domain(x.domain())  // then the domain of the graphic
@@ -91,20 +89,9 @@ var update = function(e){
         .range([height, 0]);
         y.domain([0, d3.max(bins, function(d) { return d.length; })]);   // d3.hist has to be called before the Y axis obviously
 
-
-    //svg = d3.select("#hist").transition();
-    //
-    // svg.append("g")
-    //     .attr("transform", "translate(0," + height + ")")
-    //     .call(d3.axisBottom(x));
-    //
-    // svg.append("g").transition()
-    //     .call(d3.axisLeft(y));
-
   //  console.log(svg);
     svg.selectAll("rect")
         .data(bins).transition()
-      //  .enter()
           .attr("x", 1)
           .attr("transform", function(d) { return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
           .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
